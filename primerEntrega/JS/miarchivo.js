@@ -9,6 +9,13 @@ class Producto {
     precioConIVA() {
         return this.precio * Producto.impuesto_IVA;
     }
+
+    obtenerInfo() {
+        return (
+            `Producto: ${this.nombre}, ` +
+            `precio: $${this.precioConIVA()}  (IVA incluido)\n`
+        );
+    }
 }
 
 const productos = [];
@@ -22,26 +29,34 @@ productos.push(new Producto("Esquinero", 3500));
 productos.push(new Producto("Marcos de fotos", 1500));
 productos.push(new Producto("Cajonera", 23000));
 
+let listadoDeProductos = "Listado de productos:\n\n";
+
+productos.forEach((producto) => {
+    listadoDeProductos += producto.obtenerInfo();
+});
+
+alert(listadoDeProductos);
+
+// Filtro
 const precioDesde = Number(prompt("Buscar muebles con precio desde: ($)"));
 
 const productosDesde = productos.filter(
     (producto) => producto.precioConIVA() >= precioDesde
 );
 
-let listadoDeProductos = "";
+let listadoFiltrado = "";
 
 if (productosDesde.length > 0) {
     productosDesde.forEach((producto) => {
-        listadoDeProductos +=
-            `Producto: ${producto.nombre}, ` +
-            `precio: $${producto.precioConIVA()}  (IVA incluido)\n`;
+        listadoFiltrado += producto.obtenerInfo();
     });
 } else {
-    listadoDeProductos = "No existen productos dentro del rango especificado.";
+    listadoFiltrado = "No existen productos dentro del rango especificado.";
 }
 
-alert(listadoDeProductos);
+alert(listadoFiltrado);
 
+// Buscador
 const busqueda = prompt("Buscar producto por nombre:");
 
 const productoFiltrado = productos.find(
@@ -49,10 +64,7 @@ const productoFiltrado = productos.find(
 );
 
 if (productoFiltrado) {
-    alert(
-        `Producto: ${productoFiltrado.nombre}, ` +
-            `precio: $${productoFiltrado.precioConIVA()}`
-    );
+    alert(productoFiltrado.obtenerInfo());
 } else {
     alert(`No se encontró ningún producto: ${busqueda}`);
 }
