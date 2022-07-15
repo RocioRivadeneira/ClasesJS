@@ -30,21 +30,29 @@ const productosDesde = productos.filter(
 
 let listadoDeProductos = "";
 
-productosDesde.forEach((producto) => {
-    listadoDeProductos +=
-        `Nombre del producto: ${producto.nombre}, ` +
-        `precio (IVA incluido): $${producto.precioConIVA()}\n`;
-});
+if (productosDesde.length > 0) {
+    productosDesde.forEach((producto) => {
+        listadoDeProductos +=
+            `Producto: ${producto.nombre}, ` +
+            `precio: $${producto.precioConIVA()}  (IVA incluido)\n`;
+    });
+} else {
+    listadoDeProductos = "No existen productos dentro del rango especificado.";
+}
 
 alert(listadoDeProductos);
 
 const busqueda = prompt("Buscar producto por nombre:");
 
 const productoFiltrado = productos.find(
-    (producto) => producto.nombre === busqueda
+    (producto) => producto.nombre.toLowerCase() === busqueda.toLowerCase()
 );
 
-alert(
-    `Nombre del producto: ${productoFiltrado.nombre}, ` +
-        `precio: $${productoFiltrado.precioConIVA()}`
-);
+if (productoFiltrado) {
+    alert(
+        `Producto: ${productoFiltrado.nombre}, ` +
+            `precio: $${productoFiltrado.precioConIVA()}`
+    );
+} else {
+    alert(`No se encontró ningún producto: ${busqueda}`);
+}
