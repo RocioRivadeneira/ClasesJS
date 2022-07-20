@@ -1,0 +1,18 @@
+h2 {
+    color: rgb(49, 47, 47);
+}
+
+.contenedor-padre {
+    background-color: rgb(238, 168, 238);
+}
+article {
+    text-align: center;
+}
+
+ul li {
+    background-color: rgb(233, 140, 178);
+    list-style: none;
+    width: 50%;
+    margin: 0 auto;
+}
+
