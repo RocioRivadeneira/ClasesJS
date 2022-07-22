@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.formulario{
+    background-color: violet;
+    height: 40px;
+    align-items: center;
+    padding: 15px;
+   
+}
+.formulario input{
+    height: 30px;
+}
+
+.contenedor-padre {
+    background-color: rgb(250, 193, 250);
+}
+
+ul li {
+    background-color: rgb(240, 157, 191);
+    list-style: none;
+    
+}
