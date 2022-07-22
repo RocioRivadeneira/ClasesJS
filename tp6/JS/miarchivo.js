@@ -37,7 +37,7 @@ let enviar = document.getElementById("enviar");
 
 enviar.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log(event.target);
+
     const buscarTexto = event.target.parentElement.texto.value.toLowerCase();
 
     escribirListaDeProductos(
