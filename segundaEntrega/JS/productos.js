@@ -6,6 +6,8 @@ function agregarAlCarrito(producto) {
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
+        Swal.fire(`Agregaste "${producto.nombre}" a tu carrito.`);
+
         escribirCarrito();
     };
 }
