@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Muebles Smith´s</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+
+    <body>
+        <main>
+            <section class="catalogo">
+                <h2>Listado de muebles</h2>
+                <form class="buscador">
+                    <h3>Buscar artículo:</h3>
+                    <input type="text" name="texto" placeholder="Nombre" />
+                    <button id="BotonBuscar">Buscar</button>
+                </form>
+                <ul id="Productos"></ul>
+            </section>
+
+            <aside class="carrito">
+                <h2>Carrito</h2>
+                <ul id="Carrito"></ul>
+            </aside>
+        </main>
+
+        <script src="./JS/carrito.js"></script>
+        <script src="./JS/productos.js"></script>
+    </body>
+</html>
