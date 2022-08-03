@@ -13,6 +13,17 @@ function eliminarDelCarrito(id) {
     escribirCarrito();
 }
 
+function actualizarTotal() {
+    const carrito = obtenerCarrito();
+
+    const total = Object.values(carrito).reduce(
+        (total, { precio }) => (total += precio),
+        0
+    );
+
+    document.getElementById("total").innerText = total;
+}
+
 function escribirCarrito() {
     const carrito = obtenerCarrito();
 
@@ -44,6 +55,8 @@ function escribirCarrito() {
 
             contenedorDeCarrito.appendChild(contenedorDeProducto);
         }
+
+        actualizarTotal();
     }
 }
 

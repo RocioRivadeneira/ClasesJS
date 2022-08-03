@@ -10,8 +10,12 @@ main section {
     max-width: 640px;
 }
 
-main aside.carrito {
-    max-width: 290px;
+.catalogo {
+    text-align: center;
+}
+
+aside.carrito {
+    width: 290px;
     padding: 0 16px;
 
     position: fixed;
@@ -20,16 +24,34 @@ main aside.carrito {
     right: 0;
 }
 
-.catalogo {
+aside.carrito > .contenedor {
+    width: 100%;
+    height: 100vh;
+}
+.carrito h2 {
+    height: 36px;
+    margin: 0;
+    padding: 16px 0px;
+
     text-align: center;
 }
-.carrito {
-    width: 40%;
-    height: 100vh;
-
+.carrito ul {
+    width: 100%;
+    height: 80%;
     overflow-y: scroll;
-
+    margin: 0;
+}
+.carrito ul > li {
     text-align: center;
+}
+.carrito ul li:first-child {
+    margin-top: 0px;
+}
+.carrito ul li:last-child {
+    margin-bottom: 0px;
+}
+.carrito .contenedor > p {
+    height: calc(20% - 36px);
 }
 
 input {
