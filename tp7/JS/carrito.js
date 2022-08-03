@@ -55,9 +55,17 @@ function escribirCarrito() {
 
             contenedorDeCarrito.appendChild(contenedorDeProducto);
         }
-
-        actualizarTotal();
     }
+
+    actualizarTotal();
 }
+
+document.getElementById("FinalizarCompra").addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+
+    Swal.fire("Compra finalizada!");
+
+    escribirCarrito();
+});
 
 escribirCarrito();
