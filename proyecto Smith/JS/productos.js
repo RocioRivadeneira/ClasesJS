@@ -6,22 +6,24 @@ async function dibujarProductos(productos) {
     productos.forEach((producto) => {
         const div = document.createElement("div");
 
+        div.classList.add("card");
+
         div.innerHTML = `
-        <div class="card">
-            <img src="./${producto.imagen.src}" alt="${producto.imagen.alt}" />
-            <div class="card-body text-center">
-                <h4>${producto.nombre}</h4>
-                <p class="card-text text-center">
-                    ${producto.descripcion}
-                </p>
-                <strong>$
-                    ${producto.precio}
-                </strong>
-            </div>
+        <img src="./${producto.imagen.src}" alt="${producto.imagen.alt}" />
+        <div class="card-body text-center">
+            <h4>${producto.nombre}</h4>
+            <p class="card-text text-center">
+                ${producto.descripcion}
+            </p>
+            <strong>$
+                ${producto.precio}
+            </strong>
         </div>
         `;
 
         const boton = document.createElement("button");
+
+        boton.classList.add("button-nav");
 
         boton.innerText = "Añadir al carrito";
 

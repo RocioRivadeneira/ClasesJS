@@ -2,9 +2,13 @@ function obtenerCarrito() {
     return JSON.parse(localStorage.getItem("carrito")) || {};
 }
 
+function escribirCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
 function obtenerTotal() {
     return Object.values(obtenerCarrito()).reduce(
-        (total, { precio }) => (total += precio),
+        (total, { precio, cantidad }) => (total += precio * cantidad),
         0
     );
 }
@@ -12,16 +16,26 @@ function obtenerTotal() {
 function agregarAlCarrito(producto) {
     const carrito = obtenerCarrito();
 
-    carrito[producto.id] = producto;
+    if (producto.id in carrito) {
+        const productoEnCarrito = carrito[producto.id];
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+        if (productoEnCarrito.cantidad < producto.stock) {
+            carrito[producto.id].cantidad++;
+        } else {
+            productoEnCarrito.cantidad = producto.stock;
+        }
+    } else {
+        carrito[producto.id] = { ...producto, cantidad: 1 };
+    }
+
+    escribirCarrito(carrito);
 }
 
 function eliminarDelCarrito(producto) {
     // Destructuring + spread para eliminar un ID del carrito.
     const { [producto.id]: eliminado = null, ...carrito } = obtenerCarrito();
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    escribirCarrito(carrito);
 }
 
 function vaciarCarrito() {
